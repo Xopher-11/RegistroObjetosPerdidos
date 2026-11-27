@@ -1,0 +1,47 @@
+﻿@model RegistroObjetosPerdidos.Models.Reporte
+
+@{
+    ViewData["Title"] = "Editar reporte";
+}
+
+<h1>Editar reporte</h1>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="FechaReporte" />
+    <input type="hidden" asp-for="Estado" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="NombreObjeto">Nombre del objeto</label>
+        <input asp-for="NombreObjeto" class="form-control" />
+        <span asp-validation-for="NombreObjeto" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Descripcion">Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Tipo">Tipo de reporte</label>
+        <select asp-for="Tipo" class="form-select">
+            <option value="Perdido">Objeto perdido</option>
+            <option value="Encontrado">Objeto encontrado</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Ubicacion">Ubicación</label>
+        <input asp-for="Ubicacion" class="form-control" />
+        <span asp-validation-for="Ubicacion" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>
