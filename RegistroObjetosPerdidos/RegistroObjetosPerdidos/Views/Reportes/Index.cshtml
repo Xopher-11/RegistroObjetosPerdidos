@@ -14,6 +14,7 @@
     <thead>
         <tr>
             <th>Objeto</th>
+            <th>Descripción</th>
             <th>Tipo</th>
             <th>Ubicación</th>
             <th>Fecha</th>
@@ -22,18 +23,27 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var reporte in Model)
+        @if (Model.Any())
+        {
+            @foreach (var reporte in Model)
+            {
+                <tr>
+                    <td>@reporte.NombreObjeto</td>
+                    <td>@reporte.Descripcion</td>
+                    <td>@reporte.Tipo</td>
+                    <td>@reporte.Ubicacion</td>
+                    <td>@reporte.FechaReporte.ToShortDateString()</td>
+                    <td>@reporte.Estado</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@reporte.Id" class="btn btn-warning btn-sm">Editar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@reporte.NombreObjeto</td>
-                <td>@reporte.Tipo</td>
-                <td>@reporte.Ubicacion</td>
-                <td>@reporte.FechaReporte.ToShortDateString()</td>
-                <td>@reporte.Estado</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@reporte.Id"
-                       class="btn btn-warning btn-sm">Editar</a>
-                </td>
+                <td colspan="7" class="text-center">No hay reportes registrados.</td>
             </tr>
         }
     </tbody>
