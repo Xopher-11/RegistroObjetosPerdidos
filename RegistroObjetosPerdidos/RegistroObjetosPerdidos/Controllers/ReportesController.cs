@@ -43,6 +43,45 @@ namespace RegistroObjetosPerdidos.Controllers
             return View(reporte);
         }
 
+
+        // Mostrar el formulario de edición
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reporte = await _context.Reportes.FindAsync(id);
+
+            if (reporte == null)
+            {
+                return NotFound();
+            }
+
+            return View(reporte);
+        }
+
+        // Guardar los cambios del reporte
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Reporte reporte)
+        {
+            if (id != reporte.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Reportes.Update(reporte);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(reporte);
+        }
+
     }
 
 }
