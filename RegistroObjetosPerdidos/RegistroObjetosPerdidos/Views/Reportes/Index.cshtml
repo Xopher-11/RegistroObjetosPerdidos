@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RegistroObjetosPerdidos.Models.Reporte>
+
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<h1>Objetos perdidos y encontrados</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar objeto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Objeto</th>
+            <th>Tipo</th>
+            <th>Ubicación</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reporte in Model)
+        {
+            <tr>
+                <td>@reporte.NombreObjeto</td>
+                <td>@reporte.Tipo</td>
+                <td>@reporte.Ubicacion</td>
+                <td>@reporte.FechaReporte.ToShortDateString()</td>
+                <td>@reporte.Estado</td>
+            </tr>
+        }
+    </tbody>
+</table>
