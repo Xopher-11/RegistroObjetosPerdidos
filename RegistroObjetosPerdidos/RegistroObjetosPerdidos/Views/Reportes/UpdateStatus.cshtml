@@ -1,0 +1,29 @@
+﻿@model RegistroObjetosPerdidos.Models.Reporte
+
+@{
+    ViewData["Title"] = "Actualizar estado";
+}
+
+<h1>Actualizar estado</h1>
+
+<p>Objeto: <strong>@Model.NombreObjeto</strong></p>
+
+<form asp-action="UpdateStatus" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Estado" class="form-label">Estado del reporte</label>
+
+        <select asp-for="Estado" class="form-select">
+            <option value="Pendiente">Pendiente</option>
+            <option value="Reclamado">Reclamado</option>
+            <option value="Devuelto">Devuelto</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar estado</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>
