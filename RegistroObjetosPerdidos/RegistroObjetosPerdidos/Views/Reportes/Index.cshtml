@@ -35,7 +35,8 @@
                 <td>@reporte.FechaReporte.ToShortDateString()</td>
                 <td>@reporte.Estado</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@reporte.Id" class="btn btn-warning btn-sm">Editar</a>
+                  <a asp-action="Edit" asp-route-id="@reporte.Id" class="btn btn-warning btn-sm">Editar</a>
+                  <a asp-action="UpdateStatus" asp-route-id="@reporte.Id" class="btn btn-info btn-sm">Estado</a>
                 </td>
             </tr>
         }
