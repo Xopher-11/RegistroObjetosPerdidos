@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RegistroObjetosPerdidos.Models.Reporte>
+@model IEnumerable<RegistroObjetosPerdidos.Models.Reporte>
 
 @{
     ViewData["Title"] = "Reportes";
@@ -23,28 +23,28 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Any())
-        {
-            @foreach (var reporte in Model)
-            {
-                <tr>
-                    <td>@reporte.NombreObjeto</td>
-                    <td>@reporte.Descripcion</td>
-                    <td>@reporte.Tipo</td>
-                    <td>@reporte.Ubicacion</td>
-                    <td>@reporte.FechaReporte.ToShortDateString()</td>
-                    <td>@reporte.Estado</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@reporte.Id" class="btn btn-warning btn-sm">Editar</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
+    @if (Model.Any())
+    {
+        @foreach (var reporte in Model)
         {
             <tr>
-                <td colspan="7" class="text-center">No hay reportes registrados.</td>
+                <td>@reporte.NombreObjeto</td>
+                <td>@reporte.Descripcion</td>
+                <td>@reporte.Tipo</td>
+                <td>@reporte.Ubicacion</td>
+                <td>@reporte.FechaReporte.ToShortDateString()</td>
+                <td>@reporte.Estado</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@reporte.Id" class="btn btn-warning btn-sm">Editar</a>
+                </td>
             </tr>
         }
-    </tbody>
+    }
+    else
+    {
+        <tr>
+            <td colspan="7" class="text-center">No hay reportes registrados.</td>
+        </tr>
+    }
+</tbody>
 </table>
