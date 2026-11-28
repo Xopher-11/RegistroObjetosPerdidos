@@ -125,6 +125,39 @@ namespace RegistroObjetosPerdidos.Controllers
             return RedirectToAction("Index");
         }
 
+        // Mostrar la confirmación de eliminación
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reporte = await _context.Reportes.FindAsync(id);
+
+            if (reporte == null)
+            {
+                return NotFound();
+            }
+
+            return View(reporte);
+        }
+
+        // Eliminar el reporte
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var reporte = await _context.Reportes.FindAsync(id);
+
+            if (reporte != null)
+            {
+                _context.Reportes.Remove(reporte);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 
 }
